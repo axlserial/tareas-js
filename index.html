@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css" integrity="sha512-IgmDkwzs96t4SrChW29No3NXBIBv8baW490zk5aXvhCD8vuZM3yUSkbyTBcXohkySecyzIrUwiF/qV0cuPcL3Q==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+		<link rel="icon" type="image/vnd.microsoft.icon" href="favicon-16x16.ico">
+		<title>Tareas</title>
+	</head>
+	<body>
+
+		<!-- encabezado y filtrado de tareas -->
+		<div class="columns my-5 mx-auto">
+			<div class="column"></div>
+			<div class="column is-narrow">
+				<p class="title">Tareas</p>
+			</div>
+
+			<div class="column"></div>
+			<form class="columns my-1 mx-auto" id="filters">
+				<div class="column control is-narrow mt-2">
+					<label class="has-text-weight-bold mr-5">Filtros</label>
+					<label class="radio">
+						<input type="radio" name="answer" value="Todo">
+						Todo
+					</label>
+					<label class="radio">
+						<input type="radio" name="answer" value="Completado">
+						Completado
+					</label>
+					<label class="radio">
+						<input type="radio" name="answer" value="Incompleto">
+						Incompleto
+					</label>
+				</div>
+
+				<div class="column control is-half">
+					<input class="input is-rounded" type="search" name="words" placeholder="Ingresa tarea a buscar...">
+				</div>
+
+				<div class="column">
+					<button class="button is-primary" id="search-btn" type="submit">buscar</button>
+				</div>
+			</form>
+			<div class="column"></div>
+		</div>
+
+
+		<!-- Error durante ingreso de datos -->
+		<div id="error-enter" class="columns is-hidden">
+			<div class="column is-one-quarter m-auto">
+				<article class="message is-danger">
+					<div class="message-body">
+						<!-- Error generado por JS -->
+					</div>
+				</article>
+			</div>
+		</div>
+
+
+		<!-- Ingreso de tareas -->
+		<div class="columns m-5 is-centered">
+			<form class="column is-two-fifths box">
+				<div class="field">
+					<label class="label">Título</label>
+					<div class="control">
+						<input type="text" id="titulo" class="input" placeholder="Un gran título">
+					</div>
+				</div>
+				<div class="field">
+					<label class="label">Descripción</label>
+					<div class="control">
+						<textarea id="descripcion" class="textarea" placeholder="Una buena descripción" rows="5"></textarea>
+					</div>
+				</div>
+				<button id="enter" class="button is-primary" type="button">Guardar</button>
+			</form>
+		</div>
+
+
+		<!-- Tarjetas de tareas -->
+		<div id="tarjetas" class="columns is-multiline is-centered">
+			<!-- Tarjetas generadas por JS -->
+		</div>
+
+
+		<!-- Modal -->
+		<div id="myModal" class="modal">
+			<div class="modal-background"></div>
+			<div class="modal-card">
+				<header class="modal-card-head">
+					<p class="modal-card-title">Editar tarea</p>
+					<button class="delete" aria-label="close" data-bulma-modal="close"></button>
+				</header>
+				<section class="modal-card-body">
+					<div class="columns">
+						<form class="column">
+							<div class="field">
+								<div id="error-modal" class="columns is-hidden">
+									<div class="column m-auto">
+										<article class="message is-danger">
+											<div class="message-body">
+												<!-- Error generado por JS -->
+											</div>
+										</article>
+									</div>
+								</div>
+							</div>
+							<div class="field">
+								<label class="label">Título de la tarea</label>
+								<div class="control">
+									<input id="titulo-modal" type="text" class="input" placeholder="Un gran título">
+								</div>
+							</div>
+							<div class="field">
+								<label class="label">Descripción</label>
+								<div class="control">
+									<textarea id="desc-modal" class="textarea" placeholder="Descripción" rows="5"></textarea>
+								</div>
+							</div>
+							<div class="field">
+								<label class="checkbox">
+									<input id="check-modal" type="checkbox">
+									Completada
+								</label>
+								<br>
+							</div>
+						</form>
+					</div>
+				</section>
+				<footer class="modal-card-foot">
+					<button id="save-modal" class="button is-success">Guardar</button>
+					<button class="button" data-bulma-modal="close">Cancelar</button>
+				</footer>
+			</div>
+		</div>
+
+
+		<!-- JS -->
+		<script src="./src/index.js" type="module"></script>
+
+	</body>
+</html>
